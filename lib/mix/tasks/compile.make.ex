@@ -3,7 +3,7 @@ defmodule Mix.Tasks.Compile.PutPackages do
 
   def run(_) do
     packages =
-      Application.fetch_env!(:rclex, :message_packages)
+      Application.get_env!(:rclex, :message_packages, ["StdMsgs.Msg.String"])
       |> Enum.join(" ")
     pkgtxt = File.read!("packages.txt")
     unless pkgtxt == packages do
